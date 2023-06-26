@@ -1,0 +1,1 @@
+const o={url:"/mock/login",method:"post",response:()=>({code:2e4,jwtToken:"666666"})},e={url:"/mock/loginOut",method:"post",response:()=>({code:200,title:"mock\u8BF7\u6C42\u6D4B\u8BD5"})};var t=[o,e];export{t as default};
