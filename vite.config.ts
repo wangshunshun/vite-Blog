@@ -16,9 +16,14 @@ export default defineConfig(({ command, mode }) => {
         symbolId: 'icon-[dir]-[name]'
       }),
       viteMockServe({
+        supportTs: true,
         mockPath: 'mock',
-        enable: true,
-        logger: true,
+        localEnabled: command === 'serve',
+        prodEnabled: true,
+        injectCode: `
+          import { setupProdMockServer } from './mock-prod-server';
+          setupProdMockServer();
+        `,
       }),
       AutoImport({
         imports: [
