@@ -41,6 +41,9 @@ output {
   display: inline-block;
   line-height: 1;
 }
+ul {
+  list-style: none;
+}
 
 //scroll
 @mixin main-show-wh() {

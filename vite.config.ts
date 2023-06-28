@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { viteMockServe } from 'vite-plugin-mock'
+import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 
 const pathSrc = resolve(__dirname, 'src')
@@ -24,6 +25,12 @@ export default defineConfig(({ command, mode }) => {
           import { setupProdMockServer } from './mock-prod-server';
           setupProdMockServer();
         `,
+      }),
+      Components({
+        dirs: ['src/components', 'src/icons'],
+        extensions: ['vue'],
+        deep: true,
+        dts: './typings/components.d.ts'
       }),
       AutoImport({
         imports: [

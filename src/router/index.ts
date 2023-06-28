@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import Layout from '@/layout/index.vue'
 
 export const constantRoutes: RouteRecordRaw[] = [
   {
@@ -8,8 +9,16 @@ export const constantRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/',
-    component: () => import('@/views/home/index.vue'),
-    name: 'homePage'
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/home/index.vue'),
+        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+      }
+    ]
   }
 ]
 
